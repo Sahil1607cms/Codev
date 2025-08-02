@@ -1,36 +1,7 @@
 import React from "react";
 import { useState } from "react";
-const Aside = () => {
-  const [users, setUsers] = useState([
-    {
-      socketId: 1,
-      username: "kratos",
-    },
-    {
-      socketId: 2,
-      username: "odin",
-    },
-    {
-      socketId: 3,
-      username: "kratos",
-    },
-    {
-      socketId: 4,
-      username: "thor",
-    },
-    {
-      socketId: 5,
-      username: "loki",
-    },
-    {
-      socketId: 6,
-      username: "odin",
-    },
-    {
-      socketId: 1,
-      username: "kratos",
-    },
-  ]);
+const Aside = ({users}) => {
+  
   const getColorFromUsername = (username) => {
     let hash = 0;
     for (let i = 0; i < username.length; i++) {
@@ -46,7 +17,7 @@ const Aside = () => {
           &lt; Codev /&gt;
         </h2>
         <h4 className="text-green-300  text-center py-2">Connected Users</h4>
-        <div className="flex flex-wrap justify-center cursor-pointer">
+        <div className="flex flex-wrap justify-center  cursor-pointer ">
           {users.map((user, id) => (
             <div key={id} className=" m-2 ">
               <div

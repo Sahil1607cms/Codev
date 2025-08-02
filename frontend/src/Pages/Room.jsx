@@ -6,7 +6,7 @@ const Room = () => {
   const [roomID, setRoomID] = useState("");
   const [username, setUserName] = useState("");
   const navigate = useNavigate();
-
+ 
   const joinRoom= ()=>{
     if(!roomID || !username) 
     {
@@ -19,7 +19,6 @@ const Room = () => {
         username,
       }
     })
-    toast.success(`${username} joined the room`)
   }
 
   const handleKeyPress = (e) =>{
