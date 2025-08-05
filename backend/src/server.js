@@ -28,7 +28,7 @@ const getAllUsers = (roomID) => {
 
 io.on("connection", (socket) => {
   console.log("Socket is connectedd ", socket.id);
-  //fetching join emit from frontend 
+  //fetching join emit from frontend
   socket.on("join", ({ roomID, username }) => {
     userSocketMap[socket.id] = username;
     socket.join(roomID);
@@ -41,6 +41,13 @@ io.on("connection", (socket) => {
         socketID: socket.id,
       });
     });
+  });
+
+  socket.on("code-change", ({ roomID, code }) => {
+    // console.log("receiving ", code);
+    //sending code to all connected alients
+    //io.to sends the code to all client including the one typing the code hence it overrides the code but we dont want that 
+    socket.in(roomID).emit("code-change", { code });
   });
 
   //before disconnecting, fetch all the rooms, select room with roomID, and send the disconnecting user info to frontend
