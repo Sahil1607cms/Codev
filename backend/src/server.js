@@ -50,6 +50,10 @@ io.on("connection", (socket) => {
     socket.in(roomID).emit("code-change", { code });
   });
 
+  socket.on("sync-code", ({ socketID, code }) => {
+  io.to(socketID).emit("code-change", { code });
+});
+
   //before disconnecting, fetch all the rooms, select room with roomID, and send the disconnecting user info to frontend
   socket.on("disconnecting", () => {
     //other way of converting map to array
