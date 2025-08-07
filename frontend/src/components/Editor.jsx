@@ -5,7 +5,7 @@ import "codemirror/theme/vibrant-ink.css";
 import "codemirror/mode/javascript/javascript";
 import "codemirror/addon/edit/closetag";
 import "codemirror/addon/edit/closebrackets";
-import { initSocket } from "../socket.js";
+import initSocket from "../socket.js";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
@@ -17,9 +17,18 @@ const Editor = ({ setClients }) => {
   const editorRef = useRef(null);
   const codeRef = useRef(null);
 
+  //navigate to home page in case of any error
+  const handleError = (e) => {
+    console.log("Socket error :", e);
+    toast.error("Failed to connect socket ");
+    navigate("/");
+  };
+
   useEffect(() => {
     const init = async () => {
+
       //initialize the socket as soon as the page loads
+      //preventing socket from getting reset if any component re-renders
       socketRef.current = await initSocket();
 
       socketRef.current.on("connect_error", (err) => handleError(err));
@@ -38,14 +47,8 @@ const Editor = ({ setClients }) => {
           console.log(`${username} joined`);
         }
         setClients(clients);
-        //send the previous stored code to new members for syncing
-        if (codeRef.current && codeRef.current.trim() !== "") {
-          socketRef.current.emit("sync-code", {
-            code: codeRef.current,
-            socketID,
-          });
-        }
       });
+      
       //listening for disconnecting event sent from server
       socketRef.current.on("disconnected", ({ socketID, username }) => {
         toast.error(`${username} left the room !`);
@@ -53,14 +56,24 @@ const Editor = ({ setClients }) => {
           return prev.filter((client) => client.socketID !== socketID);
         });
       });
+
+      //listening for code changes from server
+      socketRef.current.on("code-change", ({ code }) => {
+        if (code !== null && editorRef.current) {
+          editorRef.current.setValue(code);
+        }
+      });
     };
+    
     init();
+
     //always clear the listeners
-    //cleaning funcion
     return () => {
       socketRef.current.disconnect();
       socketRef.current.off("join");
       socketRef.current.off("disconnected");
+      socketRef.current.off("code-change");
+      socketRef.current.removeAllListeners();
     };
   }, []);
 
@@ -82,12 +95,10 @@ const Editor = ({ setClients }) => {
 
     intitalize();
     editorRef.current.on("change", (instance, changes) => {
-      // console.log("working")
       const { origin } = changes;
       const code = instance.getValue();
       codeRef.current = code;
       if (origin != "setValue") {
-        // console.log("Emitting ")
         socketRef.current.emit("code-change", {
           roomID,
           code,
@@ -96,24 +107,7 @@ const Editor = ({ setClients }) => {
     });
   }, []);
 
-  useEffect(() => {
-    if (socketRef.current) {
-      socketRef.current.on("code-change", ({ code }) => {
-        // console.log("receivng data" , code)
-        if (code !== null) editorRef.current.setValue(code);
-      });
-    }
-    return () => {
-      socketRef.current.off("code-change");
-    };
-  }, [socketRef.current]);
-
-  //navigate to home page in case of any error
-  const handleError = (e) => {
-    console.log("Socker error :", e);
-    toast.error("Failed to connect socket ");
-    navigate("/");
-  };
+  
   if (!location.state) {
     navigate("/");
   }
