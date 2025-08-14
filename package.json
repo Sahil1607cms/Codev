@@ -8,7 +8,7 @@
     "start": "cd backend && npm install && npm start",
     "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev\"",
     "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install",
-    "render-build": "npm run install-all && npm run build",
+    "render-build": "npm run install-all && npm run build && cd backend && npm install",
     "render-start": "npm start"
   },
   "repository": {
