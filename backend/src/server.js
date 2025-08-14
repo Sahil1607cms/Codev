@@ -9,16 +9,16 @@ dotenv.config();
 const app = express();
 
 // Get __dirname equivalent for ES modules
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Serve static files from the React app
-// app.use(express.static(path.join(__dirname, "../../frontend/dist")));
+app.use(express.static(path.join(__dirname, "../../frontend/dist")));
 
 // Handle React routing, return all requests to React app
-// app.get("/*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
-// });
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
+});
 
 const server = http.createServer(app);
 const io = new Server(server, {
