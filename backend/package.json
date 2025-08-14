@@ -5,10 +5,10 @@
   "main": "src/server.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/server.js",
-    "start": "NODE_ENV=production node --max-old-space-size=512 src/server.js",
-    "build": "cd ../frontend && npm install && npm run build"
-  },
+  "dev": "nodemon src/server.js",
+  "start": "NODE_ENV=production node --max-old-space-size=512 src/server.js",
+  "build": "npm install && cd ../frontend && npm install && npm run build"
+},
   "engines": {
     "node": "18.x"
   },
