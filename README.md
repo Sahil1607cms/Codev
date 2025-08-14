@@ -1,42 +1,54 @@
-# Codev - Real-Time Collaborative Code Editor
+# 🚀 Codev - Real-Time Collaborative Code Editor
 
-A modern, real-time collaborative code editor built with React, Socket.IO, and Express. Codev allows multiple developers to code together in real-time, making it perfect for pair programming, code reviews, and remote collaboration.
+[![React](https://img.shields.io/badge/React-19.1.1-blue.svg)](https://reactjs.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-18.x-green.svg)](https://nodejs.org/)
+[![Socket.IO](https://img.shields.io/badge/Socket.IO-4.8.1-orange.svg)](https://socket.io/)
+[![Express](https://img.shields.io/badge/Express-5.1.0-black.svg)](https://expressjs.com/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.1.11-38B2AC.svg)](https://tailwindcss.com/)
+[![License](https://img.shields.io/badge/License-ISC-blue.svg)](LICENSE)
+
+> A modern, real-time collaborative code editor that enables multiple developers to code together simultaneously. Perfect for pair programming, code reviews, and remote collaboration.
+
+## 🌟 Live Demo
+
+**[🚀 Try Codev Live](https://codev-collaborative-editor.onrender.com/)**
 
 ## ✨ Features
 
-- **Real-time Collaboration**: Multiple users can edit code simultaneously
-- **Live Code Synchronization**: Changes are instantly reflected across all connected users
-- **Room-based Sessions**: Create or join rooms using unique room IDs
-- **User Management**: See who's currently in the room
-- **Modern UI**: Clean, dark-themed interface with syntax highlighting
-- **CodeMirror Integration**: Professional code editing experience with syntax highlighting
-- **Instant Notifications**: Toast notifications for user join/leave events
+- **🔗 Real-time Collaboration** - Multiple users can edit code simultaneously with instant synchronization
+- **🏠 Room-based Sessions** - Create or join rooms using unique room IDs for organized collaboration
+- **👥 User Management** - See who's currently in the room with live user presence
+- **💻 Professional Editor** - CodeMirror integration with syntax highlighting for multiple languages
+- **🎨 Modern UI** - Clean, dark-themed interface with responsive design
+- **🔔 Instant Notifications** - Toast notifications for user join/leave events
+- **📱 Responsive Design** - Works seamlessly on desktop and mobile devices
+- **⚡ Fast Performance** - Built with Vite for optimized development and production builds
 
-## 🚀 Tech Stack
+## 🛠️ Tech Stack
 
 ### Frontend
-- **React 19** - Modern React with hooks
-- **Vite** - Fast build tool and dev server
-- **Tailwind CSS** - Utility-first CSS framework
-- **CodeMirror** - Professional code editor component
-- **Socket.IO Client** - Real-time communication
-- **React Router** - Client-side routing
-- **React Hot Toast** - Toast notifications
-- **Lucide React** - Beautiful icons
+- **[React 19](https://reactjs.org/)** - Modern React with hooks and functional components
+- **[Vite](https://vitejs.dev/)** - Lightning-fast build tool and development server
+- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework for rapid UI development
+- **[CodeMirror](https://codemirror.net/)** - Professional code editor with syntax highlighting
+- **[Socket.IO Client](https://socket.io/)** - Real-time bidirectional communication
+- **[React Router](https://reactrouter.com/)** - Client-side routing for SPA navigation
+- **[React Hot Toast](https://react-hot-toast.com/)** - Elegant toast notifications
+- **[Lucide React](https://lucide.dev/)** - Beautiful, customizable icons
 
 ### Backend
-- **Node.js** - JavaScript runtime
-- **Express.js** - Web framework
-- **Socket.IO** - Real-time bidirectional communication
-- **Nodemon** - Development server with auto-restart
+- **[Node.js](https://nodejs.org/)** - JavaScript runtime environment
+- **[Express.js](https://expressjs.com/)** - Fast, unopinionated web framework
+- **[Socket.IO](https://socket.io/)** - Real-time bidirectional event-based communication
+- **[Nodemon](https://nodemon.io/)** - Development server with automatic restart
 
-## 📦 Installation
+## 🚀 Quick Start
 
 ### Prerequisites
 - Node.js (v16 or higher)
 - npm or yarn
 
-### Setup Instructions
+### Installation
 
 1. **Clone the repository**
    ```bash
@@ -57,31 +69,30 @@ A modern, real-time collaborative code editor built with React, Socket.IO, and E
    ```
 
 4. **Set up environment variables**
-   Create a `.env` file in the backend directory:
    ```bash
    cd ../backend
    echo "PORT=5001" > .env
    ```
 
-## 🏃‍♂️ Running the Application
+### Running the Application
 
-### Development Mode
+#### Development Mode
 
 1. **Start the backend server**
    ```bash
    cd backend
    npm run dev
    ```
-   The server will start on `http://localhost:5001`
+   Server will start on `http://localhost:5001`
 
 2. **Start the frontend development server**
    ```bash
    cd frontend
    npm run dev
    ```
-   The frontend will start on `http://localhost:5173`
+   Frontend will start on `http://localhost:5173`
 
-### Production Mode
+#### Production Mode
 
 1. **Build the frontend**
    ```bash
@@ -99,7 +110,7 @@ A modern, real-time collaborative code editor built with React, Socket.IO, and E
 
 1. **Create or Join a Room**
    - Open the application in your browser
-   - Enter a username
+   - Enter your username
    - Either enter an existing room ID or generate a new one
    - Click "Join" to enter the collaborative coding session
 
@@ -133,34 +144,46 @@ Codev/
 │   │   ├── App.jsx            # Main app component
 │   │   └── socket.js          # Socket.IO client setup
 │   └── package.json
-└── README.md
+├── README.md
+└── RENDER_DEPLOYMENT.md       # Deployment guide
 ```
 
-## 🔧 API Endpoints
+## 🔧 API Documentation
 
 The application uses Socket.IO for real-time communication. Key events:
 
-- `join` - Join a room with username
-- `code-change` - Broadcast code changes to all users
-- `sync-code` - Sync code with newly joined users
-- `joined` - Notify when a user joins
-- `disconnected` - Notify when a user leaves
+| Event | Description |
+|-------|-------------|
+| `join` | Join a room with username |
+| `code-change` | Broadcast code changes to all users |
+| `sync-code` | Sync code with newly joined users |
+| `joined` | Notify when a user joins |
+| `disconnected` | Notify when a user leaves |
+
+## 🚀 Deployment
+
+This project is deployed on **Render**. Check out the [deployment guide](RENDER_DEPLOYMENT.md) for detailed instructions.
 
 ## 🤝 Contributing
 
+We welcome contributions! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
 ## 📝 License
 
-This project is licensed under the ISC License.
+This project is licensed under the **ISC License** - see the [LICENSE](LICENSE) file for details.
 
 ## 👨‍💻 Author
 
-**Sahil** - Made with ❤️
+**Sahil** - Full Stack Developer
+
+- GitHub: [@Sahil1607cms](https://github.com/Sahil1607cms)
+- Made with ❤️ and ☕
 
 ## 🙏 Acknowledgments
 
@@ -168,7 +191,15 @@ This project is licensed under the ISC License.
 - [Socket.IO](https://socket.io/) for real-time communication
 - [Tailwind CSS](https://tailwindcss.com/) for the beautiful styling
 - [React](https://reactjs.org/) for the amazing frontend framework
+- [Render](https://render.com/) for hosting the application
+
+## 📊 Project Stats
+
+![GitHub stars](https://img.shields.io/github/stars/Sahil1607cms/Codev?style=social)
+![GitHub forks](https://img.shields.io/github/forks/Sahil1607cms/Codev?style=social)
+![GitHub issues](https://img.shields.io/github/issues/Sahil1607cms/Codev)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/Sahil1607cms/Codev)
 
 ---
 
-⭐ If you find this project helpful, please give it a star!
+⭐ **If you find this project helpful, please give it a star!** ⭐
