@@ -11,7 +11,7 @@
 
 ## 🌟 Live Demo
 
-**[🚀 Try Codev Live](https://codev-collaborative-editor.onrender.com/)**
+**[🚀 Try Codev Live](https://codev-1.onrender.com/)**
 
 ## ✨ Features
 
@@ -23,6 +23,12 @@
 - **🔔 Instant Notifications** - Toast notifications for user join/leave events
 - **📱 Responsive Design** - Works seamlessly on desktop and mobile devices
 - **⚡ Fast Performance** - Built with Vite for optimized development and production builds
+
+## Screenshots
+<img width="1913" height="910" alt="image" src="https://github.com/user-attachments/assets/845a63c8-eba2-4ced-8e36-8b322c67a79a" />
+<img width="1919" height="916" alt="image" src="https://github.com/user-attachments/assets/8b6fe77e-937a-4d3f-aa07-5282f65cc885" />
+
+
 
 ## 🛠️ Tech Stack
 
