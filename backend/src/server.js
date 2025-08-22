@@ -20,7 +20,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
 });
 
-app.get("/uptime", (req, res) => {
+app.head("/uptime", (req, res) => {
   res.sendStatus(200);  // just returns 200 OK, no body
 });
 
@@ -28,7 +28,7 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: "*",
-    methods: ["GET", "POST"]
+    methods: ["GET", "POST","HEAD"]
   }
 });
 const PORT = process.env.PORT || 5001;
