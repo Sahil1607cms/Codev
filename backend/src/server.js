@@ -20,6 +20,10 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
 });
 
+app.head("/uptime", (req, res) => {
+  res.sendStatus(200);  // just returns 200 OK, no body
+});
+
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
